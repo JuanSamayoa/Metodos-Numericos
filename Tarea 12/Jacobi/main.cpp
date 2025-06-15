@@ -145,7 +145,7 @@ int main() {
     // Mostrar resultado final
     cout << "\nSolucion aproximada:\n";
     for (int i = 0; i < n; ++i) {
-        cout << "x" << i+1 << " = " << fixed << setprecision(6) << x[i] << "\n";
+        cout << "x" << i+1 << " = " << fixed << setprecision(10) << x[i] << "\n";
     }
     return 0;
 }

@@ -31,7 +31,8 @@ double f(double x)
     // return pow(x, 3) - 3 * pow(x, 2) - 1;
 
     // Inciso D
-    return (5* pow(x, 3)) - (8* pow(x,2)) - (19*x)+16;
+    //return (5* pow(x, 3)) - (8* pow(x,2)) - (19*x)+16;
+    return (-0.01 * pow(x, 3)) + (2.5 * x) + 4.5;
 }
 
 int main(int argc, char **argv)

@@ -5,35 +5,28 @@
 
 using namespace std;
 
-// Función corregida: f(x) = 2x - 6cos(x)
+// Funcion: f(x) = sen(x^3) - 3x^2 + 20x - 3
 long double f(long double x) {
-    //return powl(2,x) - 6 * cosl(x);
-    return cosl(x)- powl(x, 3);
+    return sinl(powl(x, 3)) - 3 * powl(x, 2) + 20 * x - 3;
 }
 
-// Derivada corregida: f'(x) = 2 + 6sin(x)
+// Derivada: f'(x) = 3x^2 * cos(x^3) - 6x + 20
 long double f_prime(long double x) {
-    //return logl(2) * powl(2, x) + 6 * sinl(x);
-    
-    return -sinl(x) -3 * powl(x, 2);
+    return 3 * powl(x, 2) * cosl(powl(x, 3)) - 6 * x + 20;
 }
 
 int main() {
     long double p0, TOL, p;
-    int IT;
+    int IT;    cout << fixed << setprecision(17);
+    cerr << fixed << setprecision(17);    // Encabezado modificado para coincidir con la imagen
+    cout << "Metodo de Newton-Raphson\n"
+         << "f(x) = sen(x^3) - 3x^2 + 20x - 3\n\n";
 
-    cout << fixed << setprecision(17);
-    cerr << fixed << setprecision(17);
-
-    // Encabezado modificado para coincidir con la imagen
-    cout << "Método de Newton-Raphson\n"
-         << "f(x) = 2*x - 6cos(x)\n\n";
-
-    cout << "Ingrese la aproximación inicial p0: ";
+    cout << "Ingrese la aproximacion inicial p0: ";
     cin >> p0;
     cout << "Ingrese la tolerancia TOL: ";
     cin >> TOL;
-    cout << "Ingrese el número máximo de iteraciones IT: ";
+    cout << "Ingrese el numero maximo de iteraciones IT: ";
     cin >> IT;
 
     // Ajuste de anchos de columna
@@ -51,35 +44,31 @@ int main() {
             return 1;
         }
 
-        p = p0 - fp0 / derivada;
-        long double error = fabsl(p - p0);
+        p = p0 - fp0 / derivada;        long double error = fabsl(p - p0);
 
-        // Ajuste de formato numérico
+        // Ajuste de formato numerico
         cout << "| " << setw(3) << i << " | " 
              << setw(22) << p0 << " | " 
              << setw(22) << fp0 << " | "
              << setw(22) << p << " | " 
              << setw(22) << f(p) << " | " 
-             << setw(22) << error << " |\n";
-
-        if (error < TOL) {
+             << setw(22) << error << " |\n";        if (error < TOL) {
         	
 			cout << "------------------------------------------------------------------------------------------------------------------------------------" << endl;
-            cout << "\nMétodo exitoso después de " << i << " iteraciones.\n"
-                 << "Solución aproximada: p_" << i << " = " << p << "\n"
-                 << "Valor de la función: f(p) = " << f(p) << "\n"
-                 << "f(p0)= " << setprecision(20) << fp0 << endl
-                 << "f(p)= " << setprecision(20) << f(p) << endl
-				 << "Error= " << setprecision(20) << error;
+            cout << "\nMetodo exitoso despues de " << i << " iteraciones.\n"
+                 << "Solucion aproximada: p_" << i << " = " << p << "\n"
+                 << "Valor de la funcion: f(p) = " << f(p) << "\n"
+                 << "f(p0)= " << setprecision(30) << fp0 << endl
+                 << "f(p)= " << setprecision(30) << f(p) << endl
+				 << "Error= " << setprecision(30) << error;
             return 0;
         }
 
         p0 = p;
-        i++;
-    }
+        i++;    }
 
-    cout << "\nEl método fracasó después de " << IT << " iteraciones.\n";
-    cout << "Solución aproximada: p_" << i << " = " << p << "\n"
-        	<< "Valor de la función: f(p) = " << f(p) << "\n";
+    cout << "\nEl metodo fracaso despues de " << IT << " iteraciones.\n";
+    cout << "Solucion aproximada: p_" << i << " = " << p << "\n"
+        	<< "Valor de la funcion: f(p) = " << f(p) << "\n";
     return 0;
 }

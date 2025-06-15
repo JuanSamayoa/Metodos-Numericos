@@ -9,6 +9,7 @@ Autor: Juan Enrique Samayoa Reyes
 Fecha: 25 de abril de 2025
 */
 
+
 #include <iostream> // entrada/salida por consola (cin, cout, cerr)
 #include <vector>		// contenedores dinamicos para matrices y vectores
 #include <limits>		// numeric_limits para limpiar buffer y validar entradas
